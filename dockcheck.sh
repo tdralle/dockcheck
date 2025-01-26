@@ -337,7 +337,8 @@ if [ -n "$CollectorTextFileDirectory" ] ; then
   promFileContent+=("# TYPE dockcheck_images_analyze_timestamp_seconds gauge")
   promFileContent+=("dockcheck_images_analyze_timestamp_seconds $checkTimestamp")
   
-  printf "%s\n" "${promFileContent[@]}" > "$CollectorTextFileDirectory/dockcheck_info.prom"
+  printf "%s\n" "${promFileContent[@]}" > "$CollectorTextFileDirectory/dockcheck_info.prom\$\$"
+  mv -f "$CollectorTextFileDirectory/dockcheck_info.prom\$\$" "$CollectorTextFileDirectory/dockcheck_info.prom"
 fi
 
 # Define how many updates are available
